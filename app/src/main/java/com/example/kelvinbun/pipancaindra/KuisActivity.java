@@ -82,7 +82,7 @@ public class KuisActivity extends AppCompatActivity {
                 if(soalPosisi==jawabanPosisi){
                     skor = skor+1;
                     updateSkor(skor);
-                    updateSoal();;
+                    updateSoal();
                     Toast.makeText(KuisActivity.this, "Jawaban Benar", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(KuisActivity.this, "Jawaban Salah", Toast.LENGTH_SHORT).show();
@@ -126,16 +126,15 @@ public class KuisActivity extends AppCompatActivity {
 
     public void updateSoal() {
         if (posisi <= 15) {
-            List<Integer> list = listAcak;
 
-            Collections.shuffle(list);
+            Collections.shuffle(listAcak);
 
-            soalString = String.valueOf(penulisan.getsoal(list.get(0)).get(0));
-            pilihan1String = String.valueOf(penulisan.getsoal(list.get(0)).get(1));
-            pilihan2String = String.valueOf(penulisan.getsoal(list.get(0)).get(2));
-            pilihan3String = String.valueOf(penulisan.getsoal(list.get(0)).get(3));
-            pilihan4String = String.valueOf(penulisan.getsoal(list.get(0)).get(4));
-            jawabanPosisi = Integer.valueOf(penulisan.getsoal(list.get(0)).get(5));
+            soalString = String.valueOf(penulisan.getsoal(listAcak.get(0)).get(0));
+            pilihan1String = String.valueOf(penulisan.getsoal(listAcak.get(0)).get(1));
+            pilihan2String = String.valueOf(penulisan.getsoal(listAcak.get(0)).get(2));
+            pilihan3String = String.valueOf(penulisan.getsoal(listAcak.get(0)).get(3));
+            pilihan4String = String.valueOf(penulisan.getsoal(listAcak.get(0)).get(4));
+            jawabanPosisi = Integer.valueOf(penulisan.getsoal(listAcak.get(0)).get(5));
 
             soaltextview.setText(soalString);
             pilihan1.setText(pilihan1String);
@@ -167,19 +166,5 @@ public class KuisActivity extends AppCompatActivity {
     private void updateSkor(int skor){
         skortextview.setText(""+skor+"/15");
     }
-
-
-    /**public ArrayList<Integer> RandomIndex(int jumlahSoalDB) {
-        ArrayList<Integer> indeks = new ArrayList<>();
-        Random randomGenerator = new Random();
-        Log.e("size", String.valueOf(indeks.size()));
-        while (indeks.size() < jumlahSoalDB) {
-            int random = randomGenerator.nextInt(jumlahSoalDB);
-            Log.e("i", String.valueOf(random));
-            if (!indeks.contains(random))
-                indeks.add(random);
-        }
-        Log.e("size", String.valueOf(indeks.size()));
-        return indeks;
-    }**/
+    
 }
